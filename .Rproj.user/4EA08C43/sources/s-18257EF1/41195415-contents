@@ -1,0 +1,176 @@
+---
+title: "R Tips and Tricks"
+author: "Nadia Kennar"
+date: "17/09/2021"
+output: word_document
+tol: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(eval = FALSE, echo = TRUE)
+```
+
+
+
+
+## R Studio Appearence 
+
+Not happy with the white background of R, changes the appearance by 
+
+
+*tools -> global options -> appearance* and select your favorite theme 
+
+
+
+## R projects
+
+
+An R project is just a folder stored on your computer that holds all relevant scripts and files, it also sets up a working directory so avoids the use of *setwd()*
+
+To create a project go to 
+
+*File* -> *New Project* -> *New Directory* -> *New Project* 
+
+This method also allows you create new directories, join to existing ones or set upa version control (like Git Hub which is useful for collaborative projects)
+
+
+
+## Saving Objects 
+
+When working on dataset, typically you end up changing, manipulating or adding variables to the original dataset. This data manipulation is often tedious and you don't want to have to redo or rerun the code every time you open R. Therefore saving objects into R become useful with the function
+
+*save(new_dataset, file = "a folder in your computer/new_dataset")*
+
+
+```{r}
+save(new_dataset, file = "/RTipsFolder/new_dataset")  
+
+#Then you can load the dataset whenever you need it 
+
+load("RTipsFolder/new_dataset")
+
+```
+
+
+
+## Deleting Objects 
+
+
+```{r}
+rm(x)              #for one object 
+
+rm(list = ls())    #for all objects
+```
+
+
+
+
+
+
+## Commments in RScripts 
+
+To write comments in R by using #. These can be put in the start, middle or at the end of code and will not affect your code being run for example;
+
+
+```{r}
+
+#Install.packages(“haven”)   #my package is already installed but I want to have this visible
+library(haven)               #load the package 
+
+```
+
+The only command run will be 'library(haven)'
+
+
+You can create subheadings by using five ##### at the end of a line. This will create a little drop-down menu, that allows you to hide anything underneath it by clicking on the arrow 
+
+
+```{r}
+#### Title 1 #####
+
+or 
+
+Title #####
+
+```
+
+
+Now imagine you have some code present in your RScript but you don’t want it to run nor do you want to delete it. Well, you can select multiple lines of code using ‘Cltr + shift + c’ that blocks out whole sections
+
+
+```{r}
+
+#data %>% 
+#group_by(age) %>% 
+#summary(count = n())
+
+```
+
+
+
+
+
+## Creating function in R 
+
+
+
+
+
+
+## Key Board Short Cuts 
+
+
+### Find/Replace : CLTR + F
+ 
+Its possible to replace the name of a variable in R by clicking 'CLTR + F. 
+
+In the 'find' box type the name of the variable you want to change, and then in the 'replace box' type what you want to replace it with. This can change the name of the variable across the whole script or for just one instanc. 
+
+
+### ALT - : The assingment operator '<-'
+
+This variable is used often in coding, it assigns a new value, or dataset from an existing one. You can press the alt key and the minus key to insert this 
+
+
+```{r}
+# alt - 
+
+new_datset <- datset 
+
+```
+
+
+
+### Tab Key : Code Snippet
+
+
+```{r}
+#imagine you had a variable name called "what_are_peoples_opinions_about_the_weather_in_manchester_uk?"
+
+#having to type this variable out every time you need it is a pain, instead type the first few words and R will recognize the variable, and all you have to do is press 'tab'
+
+```
+
+
+### F2 - Function Definition 
+
+If you want more information about a function, hover your cursor of a function and press F2
+
+
+
+
+### Alt + Left Mouse Button + Drag
+
+
+```{r}
+
+This allows you to write code on multiple lines
+This allows you to write code on multiple linee
+This allows you to write code on multiple lines
+This allows you to write code on multiple lines
+This allows you to write code on multiple lines
+
+```
+
+
+

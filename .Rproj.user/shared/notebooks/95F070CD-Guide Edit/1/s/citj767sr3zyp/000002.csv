@@ -1,0 +1,5 @@
+"0","cor.test(leftright, libauth, use='complete.obs')
+"
+"2","Error in cor.test(leftright, libauth, use = ""complete.obs"") : 
+  object 'leftright' not found
+"

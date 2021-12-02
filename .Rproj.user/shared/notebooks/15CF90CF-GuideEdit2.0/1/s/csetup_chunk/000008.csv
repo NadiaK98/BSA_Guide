@@ -1,0 +1,10 @@
+"0","
+library(png)
+library(tinytex)
+"
+"2","Warning:"
+"2"," package ‘tinytex’ was built under R version 4.0.5
+"
+"2","Error: package or namespace load failed for ‘tinytex’ in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]):
+ namespace ‘xfun’ 0.21 is already loaded, but >= 0.23 is required
+"

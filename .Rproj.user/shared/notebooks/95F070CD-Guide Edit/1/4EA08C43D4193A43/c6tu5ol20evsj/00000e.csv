@@ -1,0 +1,6 @@
+"0","grid(bsa$leftrigh)
+"
+"2","first element used of 'length.out' argument"
+"2","Error in (if (log) 10^at else at)[-c(1, nx + 1)] : 
+  only 0's may be mixed with negative subscripts
+"

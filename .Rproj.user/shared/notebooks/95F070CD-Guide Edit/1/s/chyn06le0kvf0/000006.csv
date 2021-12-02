@@ -1,0 +1,4 @@
+"0","t2 < - crosstab(bsa$HEdQual3, bsa$PartyId2, prop.c=T, plot=F,chisq=T, bsa$WtFactor)
+"
+"2","Error: object 't2' not found
+"

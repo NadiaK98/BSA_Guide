@@ -1,0 +1,7 @@
+"0","ggplot(filter(bsa, !is.na(HEdQual3) & !is.na(leftrigh)), 
+       aes(x = reorder(HEdQual3, leftrigh, FUN = median), y = leftrigh)) +
+        geom_boxplot()
+"
+"2","Error in filter(bsa, !is.na(HEdQual3) & !is.na(leftrigh)) : 
+  object 'HEdQual3' not found
+"

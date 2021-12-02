@@ -1,0 +1,1 @@
+{"frames":[{"func":"grid(bsa$leftrigh)","file":"","line_number":0,"end_line_number":0,"character_number":0,"end_character_number":0}],"message":"Error in (if (log) 10^at else at)[-c(1, nx + 1)] : \n  only 0's may be mixed with negative subscripts\n"}

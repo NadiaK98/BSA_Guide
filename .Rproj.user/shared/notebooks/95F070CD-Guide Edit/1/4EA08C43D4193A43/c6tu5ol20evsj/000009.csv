@@ -1,0 +1,7 @@
+"0","mosaicplot(bsa$leftrigh, na.rm = T)
+"
+"2","In mosaicplot.default(bsa$leftrigh, na.rm = T) :
+ extra argument ‘na.rm’ will be disregarded"
+"2","Error in mosaic.cell(Ind, x1 = x1, y1 = y1, x2 = x2, y2 = y2, srt.x = srt.x,  : 
+  missing values in contingency table
+"

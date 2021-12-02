@@ -10,7 +10,7 @@ toc: true
 #knitr::opts_chunk$set(echo = TRUE)
 
 library(png)
-#library(tinytex)
+library(tinytex)
 library(devtools)
 library(foreign)
 library(janitor)
@@ -25,7 +25,7 @@ levels(bsa$Rsex)
 #bsa2 <- read_sav("bsa_2017_open_enviropol.sav")  #haven
 #bsa3 <- read_spss("bsa_2017_open_enviropol.sav") #haven
 
-getwd()
+
 ```
 
 
@@ -477,8 +477,7 @@ This produces the first 100 observations which can be messy to read. The summary
 
 
 ```{r, eval=FALSE, echo=TRUE}
-bsa$leftrigh <- as.numeric (bsa$leftrigh)
-summary(bsa$leftrigh)
+summary(bsa$Rsex)
 ```
 
 Now we can see that there are 1806 Males and 2182 Females in our dataset 
@@ -739,10 +738,9 @@ sum(is.na(bsa_copy))               #in the whole dataset
 sum(is.na(bsa_copy$leftrigh))      #in the leftright variable 
 #[1] 782 
 
+mean(is.na(bsa_copy$leftrigh))     #returns the proportion of NAs
 
-mean(is.na(bsa$leftrigh))     #returns the proportion of NAs
-
-is.na(bsa$leftrigh)           #returns true or false values 
+is.na(bsa_copy$leftrigh)           #returns true or false values 
 
 
 ```
@@ -770,10 +768,9 @@ If you had responses such as 'does not apply' or 'no answer' you can recode them
 dataset$new_variable <- dataset$old_variable 
 dataset$new_variable[dataset$new_variable == "Does not apply" |
                      dataset$new_variable == "No Answer"] <- NA
-
-library(arm)
-
 ```
+
+
 
 
 #### 5.4.4 Deleting NAs
@@ -848,7 +845,7 @@ will give information about the mean, median and quartiles of the hourly earning
 
 
 ```{r, eval = TRUE, echo= TRUE}
-summary(bsa$leftrigh, na.rm = FALSE)
+summary(bsa$leftrigh, na.rm = T)
 ```
 
 
@@ -885,7 +882,7 @@ rm
 
 ## can be created in one line like so 
 
-round(mean(bsa_copy$leftrigh,na.rm=T),2)
+round(mean(bsa$leftrigh,na.rm=T),2)
 
 ```
 
@@ -1017,7 +1014,7 @@ This initial plot is not fully satisfactory: the names of the regions are not di
 
 ```{r, eval = TRUE, echo = TRUE}
 
-barplot(g$leftrigh.mean, names.arg = g$Married2, col = 'blue', las = 1, horiz = TRUE)
+barplot(g$leftrigh.mean, names.arg = g$Married2, col = 'blue', las =1)
 
 
 ```
@@ -1243,8 +1240,8 @@ To obtain the percentages
 
 
 ```{r, eval = FALSE, echo=TRUE}
-round(prop.table(svytable(~ Married + Politics, weighted_data),1),3)*100  #row %
-round(prop.table(svytable(~ Married + Politics, weighted_data),2),3)*100  #column%
+round(prop.table(svytable(~ Married + Politics, weighted_data),1),3)  #row %
+round(prop.table(svytable(~ Married + Politics, weighted_data),2),3)  #column%
 ```
 
 
@@ -1554,7 +1551,6 @@ If the 1 was associated with 'Yes' then the model will be predicting the probabi
 ```{r, eval=TRUE, echo=TRUE}
 levels(bsa$Voted)     #Note that Yes comes before No
 
-
 contrasts(bsa$Voted)
 ```
 
@@ -1567,7 +1563,6 @@ bsa$Voted2 <- relevel(bsa$Voted, ref = "No")
 
 #Check the contrasts
 contrasts(bsa$Voted2)
-
 ```
 
 
@@ -1578,7 +1573,7 @@ To run the model,we use the glm() function. The family function is to tell R our
 The below code is assessing what degree education has on someone voting 
 
 ```{r, eval=TRUE, echo=TRUE}
-fit1 <- glm(Voted2 ~ HEdQual3, data=bsa, family = "binomial")
+fit1 <- glm(Voted ~ HEdQual3, data=bsa, family = "binomial")
 summary(fit1)
 ```
 
@@ -1587,7 +1582,7 @@ summary(fit1)
 To then run a model controlling for other variables such as gender you simple use the plus sign. In model 2 we are assessing what degree education seems to matter on voting even when controlling for sex and age
 
 ```{r, eval = TRUE, echo=TRUE}
-fit2 <- glm(Voted2 ~ HEdQual3 + Rsex + RAgeCat, data=bsa, family = "binomial")
+fit2 <- glm(Voted ~ HEdQual3 + Rsex + RAgeCat, data=bsa, family = "binomial")
 summary(fit2)
 ```
 

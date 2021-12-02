@@ -1,0 +1,6 @@
+"0","t1 <- crosstab(bsa$Rsex, bsa$PartyId2, prop.r=T,plot=F,chisq=T)
+"
+"2","Error: `crosstab()` was deprecated in janitor 2.0.0 and is now defunct.
+Please use `tabyl()` instead.
+See the guide to tabyl(): https://cran.r-project.org/web/packages/janitor/vignettes/tabyls.html
+"
